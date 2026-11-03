@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
-use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
@@ -11,6 +10,10 @@ class GenreController extends Controller
     {
         $genres = Genre::all();
 
-        return view('genres', ['genres' => $genres]);
+        return response()->json([
+            "success" => true,
+            "message" => "Get all resources",
+            "data" => $genres
+        ], 200);
     }
 }
